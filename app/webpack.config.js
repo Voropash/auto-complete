@@ -35,13 +35,11 @@ const config = {
   }
 };
 
-if (process.env.NODE_ENV === 'prod') {
   config.plugins = [
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
   ];
   config.module.rules.push({
     test: /\.ts$/, use: 'strip-loader?strip[]=debug,strip[]=console.log'
   });
-}
 
 module.exports = config;

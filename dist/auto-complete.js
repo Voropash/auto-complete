@@ -11,13 +11,7 @@ var NguiAutoComplete = (function () {
         // ...
     }
     NguiAutoComplete.prototype.filter = function (list, keyword, matchFormatted) {
-        var _this = this;
-        return list.filter(function (el) {
-            var objStr = matchFormatted ? _this.getFormattedListItem(el).toLowerCase() : JSON.stringify(el).toLowerCase();
-            keyword = keyword.toLowerCase();
-            //console.log(objStr, keyword, objStr.indexOf(keyword) !== -1);
-            return objStr.indexOf(keyword) !== -1;
-        });
+        return list;
     };
     NguiAutoComplete.prototype.getFormattedListItem = function (data) {
         var formatted;

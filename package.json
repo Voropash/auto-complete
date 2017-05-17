@@ -16,8 +16,8 @@
     "test:webtest": "webtest webtest.txt",
     "build": "npm-run-all --serial clean build:ngc build:umd build:app",
     "build:ngc": "ngc -p tsconfig.ngc.json",
-    "build:umd": "NODE_ENV=prod webpack",
-    "build:app": "NODE_ENV=prod webpack --config app/webpack.config"
+    "build:umd": "webpack",
+    "build:app": "webpack --config app/webpack.config"
   },
   "dependencies": {
     "@ngui/utils": "^0.7.0"

@@ -18,14 +18,7 @@ export class NguiAutoComplete {
   }
 
   filter(list: any[], keyword: string, matchFormatted: boolean) {
-    return list.filter(
-      el => {
-        let objStr = matchFormatted ? this.getFormattedListItem(el).toLowerCase() : JSON.stringify(el).toLowerCase();
-        keyword = keyword.toLowerCase();
-        //console.log(objStr, keyword, objStr.indexOf(keyword) !== -1);
-        return objStr.indexOf(keyword) !== -1;
-      }
-    );
+    return list;
   }
 
   getFormattedListItem(data: any) {
