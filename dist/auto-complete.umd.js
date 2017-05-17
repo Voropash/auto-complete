@@ -387,7 +387,23 @@ var NguiAutoComplete = (function () {
         // ...
     }
     NguiAutoComplete.prototype.filter = function (list, keyword, matchFormatted) {
-        return list;
+        var _this = this;
+        var pos = keyword.lastIndexOf(',');
+        if (pos > 0) {
+            keyword = keyword.substring(pos + 1);
+        }
+        return list.filter(function (el) {
+            var objStr = matchFormatted ? _this.getFormattedListItem(el).toLowerCase() :
+                JSON.stringify(el).toLowerCase();
+            keyword = keyword.toLowerCase();
+            //console.log(objStr, keyword, objStr.indexOf(keyword) !== -1);
+            if (pos < 0) {
+                return objStr.indexOf(keyword) !== -1;
+            }
+            else {
+                return true;
+            }
+        });
     };
     NguiAutoComplete.prototype.getFormattedListItem = function (data) {
         var formatted;
