@@ -106,7 +106,9 @@ var NguiAutoCompleteDirective = (function () {
                 valueString = '' + item;
             }
             else {
-                _this.inputEl && (_this.inputEl.value = '' + str + item);
+                var lastPosNumber = str.lastIndexOf(',');
+                var strPart = str.substring(0, lastPosNumber + 2);
+                _this.inputEl && (_this.inputEl.value = '' + strPart + item);
                 valueString = '' + str + item;
             }
             // make return value

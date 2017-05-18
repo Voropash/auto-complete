@@ -277,7 +277,9 @@ export class NguiAutoCompleteDirective implements OnInit {
             this.inputEl && (this.inputEl.value = '' + item);
             valueString = '' + item;
         } else {
-            this.inputEl && (this.inputEl.value = '' + str + item);
+            let lastPosNumber = str.lastIndexOf(',');
+            let strPart = str.substring(0, lastPosNumber + 2);
+            this.inputEl && (this.inputEl.value = '' + strPart + item);
             valueString = '' + str + item;
         }
         // make return value
