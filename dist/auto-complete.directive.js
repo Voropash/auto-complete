@@ -97,7 +97,7 @@ var NguiAutoCompleteDirective = (function () {
             if (item && typeof item === "object") {
                 item = _this.setToStringFunction(item);
             }
-            _this.inputEl && (_this.inputEl.value = '' + item);
+            _this.inputEl && (_this.inputEl.value = '' + _this.ngModel + item);
             // make return value
             var val = item;
             if (_this.selectValueOf && item[_this.selectValueOf]) {
