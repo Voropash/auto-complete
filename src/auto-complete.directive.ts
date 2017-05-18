@@ -261,7 +261,7 @@ export class NguiAutoCompleteDirective implements OnInit {
     if (item && typeof item === "object") {
       item = this.setToStringFunction(item);
     }
-    this.inputEl && (this.inputEl.value = '' + item);
+    this.inputEl && (this.inputEl.value = '' + this.ngModel + item);
 
     // make return value
     let val = item;
