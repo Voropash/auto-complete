@@ -109,7 +109,7 @@ var NguiAutoCompleteDirective = (function () {
                 var lastPosNumber = str.lastIndexOf(',');
                 var strPart = str.substring(0, lastPosNumber + 2);
                 _this.inputEl && (_this.inputEl.value = '' + strPart + item);
-                valueString = '' + str + item;
+                valueString = '' + strPart + item;
             }
             // make return value
             var val = valueString;
