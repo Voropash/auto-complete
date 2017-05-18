@@ -1,6 +1,6 @@
-import { ComponentRef, ViewContainerRef, EventEmitter, OnInit, ComponentFactoryResolver, Renderer, SimpleChanges } from "@angular/core";
-import { NguiAutoCompleteComponent } from "./auto-complete.component";
-import { ControlContainer, AbstractControl, FormControl } from "@angular/forms";
+import { ComponentRef, ViewContainerRef, EventEmitter, OnInit, ComponentFactoryResolver, Renderer, SimpleChanges } from '@angular/core';
+import { NguiAutoCompleteComponent } from './auto-complete.component';
+import { ControlContainer, AbstractControl, FormControl } from '@angular/forms';
 /**
  * display auto-complete section with input and dropdown list when it is clicked
  */

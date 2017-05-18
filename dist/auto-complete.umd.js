@@ -543,7 +543,8 @@ var NguiAutoCompleteDirective = (function () {
                 var currentItem = void 0;
                 var hasRevertValue = (typeof _this.revertValue !== "undefined");
                 if (_this.inputEl && hasRevertValue && _this.acceptUserInput === false) {
-                    currentItem = _this.componentRef.instance.findItemFromSelectValue(_this.inputEl.value);
+                    currentItem =
+                        _this.componentRef.instance.findItemFromSelectValue(_this.inputEl.value);
                 }
                 _this.componentRef.destroy();
                 _this.componentRef = undefined;
@@ -580,9 +581,16 @@ var NguiAutoCompleteDirective = (function () {
             if (item && typeof item === "object") {
                 item = _this.setToStringFunction(item);
             }
-            _this.inputEl && (_this.inputEl.value = '' + _this.ngModel + item);
+            var str = _this.ngModel;
+            var posNumber = str.indexOf(',');
+            if (posNumber < 0) {
+                _this.inputEl && (_this.inputEl.value = '' + item);
+            }
+            else {
+                _this.inputEl && (_this.inputEl.value = '' + str + item);
+            }
             // make return value
-            var val = item;
+            var val = '' + str + item;
             if (_this.selectValueOf && item[_this.selectValueOf]) {
                 val = item[_this.selectValueOf];
             }
@@ -637,7 +645,8 @@ var NguiAutoCompleteDirective = (function () {
                 this.formControl = this.parentForm['form'].get(this.formControlName);
             }
             else if (this.parentForm instanceof forms_1.FormGroupName) {
-                this.formControl = this.parentForm.control.controls[this.formControlName];
+                this.formControl =
+                    this.parentForm.control.controls[this.formControlName];
             }
         }
         else if (this.extFormControl) {
@@ -693,7 +702,8 @@ var NguiAutoCompleteDirective = (function () {
             else if (this.displayPropertyName) {
                 displayVal_1 = item[this.displayPropertyName];
             }
-            else if (typeof this.listFormatter === 'string' && this.listFormatter.match(/^\w+$/)) {
+            else if (typeof this.listFormatter === 'string' &&
+                this.listFormatter.match(/^\w+$/)) {
                 displayVal_1 = item[this.listFormatter];
             }
             else {
