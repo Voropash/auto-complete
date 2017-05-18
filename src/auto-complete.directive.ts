@@ -272,13 +272,16 @@ export class NguiAutoCompleteDirective implements OnInit {
         }
         let str = this.ngModel;
         let posNumber = str.indexOf(',');
+        let valueString: string;
         if (posNumber < 0) {
             this.inputEl && (this.inputEl.value = '' + item);
+            valueString = '' + item;
         } else {
             this.inputEl && (this.inputEl.value = '' + str + item);
+            valueString = '' + str + item;
         }
         // make return value
-        let val = '' + str + item;
+        let val = valueString;
         if (this.selectValueOf && item[this.selectValueOf]) {
             val = item[this.selectValueOf];
         }

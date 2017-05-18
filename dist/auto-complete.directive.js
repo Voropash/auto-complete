@@ -100,14 +100,17 @@ var NguiAutoCompleteDirective = (function () {
             }
             var str = _this.ngModel;
             var posNumber = str.indexOf(',');
+            var valueString;
             if (posNumber < 0) {
                 _this.inputEl && (_this.inputEl.value = '' + item);
+                valueString = '' + item;
             }
             else {
                 _this.inputEl && (_this.inputEl.value = '' + str + item);
+                valueString = '' + str + item;
             }
             // make return value
-            var val = '' + str + item;
+            var val = valueString;
             if (_this.selectValueOf && item[_this.selectValueOf]) {
                 val = item[_this.selectValueOf];
             }
