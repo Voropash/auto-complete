@@ -1,5 +1,5 @@
-import { ElementRef, OnInit, EventEmitter } from "@angular/core";
-import { NguiAutoComplete } from "./auto-complete";
+import { ElementRef, OnInit, EventEmitter } from '@angular/core';
+import { NguiAutoComplete } from './auto-complete';
 /**
  * show a selected date in monthly calendar
  * Each filteredList item has the following property in addition to data itself
@@ -51,6 +51,7 @@ export declare class NguiAutoCompleteComponent implements OnInit {
     findItemFromSelectValue(selectText: string): any;
     reloadList(keyword: string): void;
     selectOne(data: any): void;
+    selectOneWithSave(data: any): void;
     inputElKeyHandler: (evt: any) => void;
     scrollToView(index: any): void;
     readonly emptyList: boolean;
