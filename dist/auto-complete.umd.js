@@ -674,6 +674,7 @@ var NguiAutoCompleteDirective = (function () {
         this.inputEl = this.el.tagName === "INPUT" ?
             this.el : this.el.querySelector("input");
         this.inputEl.addEventListener('focus', function (e) { return _this.showAutoCompleteDropdown(e); });
+        this.inputEl.addEventListener('keyup', function (e) { return _this.showAutoCompleteDropdown(e); });
         this.inputEl.addEventListener('blur', function (e) {
             _this.scheduledBlurHandler = _this.hideAutoCompleteDropdown;
         });

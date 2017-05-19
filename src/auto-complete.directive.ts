@@ -122,6 +122,7 @@ export class NguiAutoCompleteDirective implements OnInit {
             <HTMLInputElement>this.el : <HTMLInputElement>this.el.querySelector("input");
 
         this.inputEl.addEventListener('focus', e => this.showAutoCompleteDropdown(e));
+        this.inputEl.addEventListener('keyup', e => this.showAutoCompleteDropdown(e));
         this.inputEl.addEventListener('blur', e => {
             this.scheduledBlurHandler = this.hideAutoCompleteDropdown;
         });
