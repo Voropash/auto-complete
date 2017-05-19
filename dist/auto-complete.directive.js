@@ -48,7 +48,7 @@ var NguiAutoCompleteDirective = (function () {
             if (_this.el.tagName !== "INPUT" && _this.acDropdownEl) {
                 _this.inputEl.parentElement.insertBefore(_this.acDropdownEl, _this.inputEl.nextSibling);
             }
-            _this.revertValue = typeof _this.ngModel !== "undefined" ? _this.ngModel : _this.inputEl.value;
+            _this.revertValue = typeof _this.ngModel !== 'undefined' ? _this.ngModel : _this.inputEl.value;
             setTimeout(function () {
                 component.reloadList(_this.inputEl.value);
                 _this.styleAutoCompleteDropdown();
@@ -211,7 +211,9 @@ var NguiAutoCompleteDirective = (function () {
                 component.reloadList(this.ngModel.toString());
             }
             else {
-                this.showAutoCompleteDropdown();
+                if (typeof this.ngModel !== 'undefined') {
+                    this.showAutoCompleteDropdown();
+                }
             }
         }
     };

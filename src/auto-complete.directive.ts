@@ -145,7 +145,9 @@ export class NguiAutoCompleteDirective implements OnInit, OnChanges {
                 component.source = changes['source'].currentValue;
                 component.reloadList(this.ngModel.toString());
             } else {
-                this.showAutoCompleteDropdown()
+                if (typeof this.ngModel !== 'undefined') {
+                    this.showAutoCompleteDropdown();
+                }
             }
         }
     }
@@ -188,7 +190,7 @@ export class NguiAutoCompleteDirective implements OnInit, OnChanges {
             this.inputEl.parentElement.insertBefore(this.acDropdownEl, this.inputEl.nextSibling);
         }
 
-        this.revertValue = typeof this.ngModel !== "undefined" ? this.ngModel : this.inputEl.value;
+        this.revertValue = typeof this.ngModel !== 'undefined' ? this.ngModel : this.inputEl.value;
 
         setTimeout(() => {
             component.reloadList(this.inputEl.value);
