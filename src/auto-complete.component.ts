@@ -25,6 +25,7 @@ import { NguiAutoComplete } from "./auto-complete";
            #autoCompleteInput class="keyword"
            placeholder="{{placeholder}}"
            (focus)="showDropdownList($event)"
+           (keyup)="showDropdownList($event)"
            (blur)="hideDropdownList()"
            (keydown)="inputElKeyHandler($event)"
            (input)="reloadListInDelay($event)"
@@ -196,7 +197,9 @@ export class NguiAutoCompleteComponent implements OnInit {
   reloadList(keyword: string): void {
 
     this.filteredList = [];
-    if (keyword.length < (this.minChars || 0)) {
+    let num: number = keyword.lastIndexOf(',');
+    let subStr = keyword.substring(num + 1).trim();
+    if (subStr.length < (this.minChars || 0)) {
       this.minCharsEntered = false;
       return;
     } else {
