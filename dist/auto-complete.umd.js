@@ -690,9 +690,9 @@ var NguiAutoCompleteDirective = (function () {
             this.ngModel = this.setToStringFunction(changes['ngModel'].currentValue);
         }
         if (changes['source']) {
-            this.source = changes['source'].currentValue;
             if (this.componentRef) {
                 var component = this.componentRef.instance;
+                component.source = changes['source'].currentValue;
                 component.reloadList(this.ngModel.toString());
             }
             else {

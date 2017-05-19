@@ -140,9 +140,9 @@ export class NguiAutoCompleteDirective implements OnInit, OnChanges {
             this.ngModel = this.setToStringFunction(changes['ngModel'].currentValue);
         }
         if (changes['source']) {
-            this.source = changes['source'].currentValue;
             if (this.componentRef) {
                 let component = <NguiAutoCompleteComponent>this.componentRef.instance;
+                component.source = changes['source'].currentValue;
                 component.reloadList(this.ngModel.toString());
             } else {
                 this.showAutoCompleteDropdown()
