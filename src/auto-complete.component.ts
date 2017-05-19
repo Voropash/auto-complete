@@ -25,7 +25,6 @@ import { NguiAutoComplete } from "./auto-complete";
            #autoCompleteInput class="keyword"
            placeholder="{{placeholder}}"
            (focus)="showDropdownList($event)"
-           (keyup)="showDropdownList($event)"
            (blur)="hideDropdownList()"
            (keydown)="inputElKeyHandler($event)"
            (input)="reloadListInDelay($event)"

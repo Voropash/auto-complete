@@ -189,7 +189,6 @@ var NguiAutoCompleteDirective = (function () {
         this.inputEl = this.el.tagName === "INPUT" ?
             this.el : this.el.querySelector("input");
         this.inputEl.addEventListener('focus', function (e) { return _this.showAutoCompleteDropdown(e); });
-        this.inputEl.addEventListener('keyup', function (e) { return _this.showAutoCompleteDropdown(e); });
         this.inputEl.addEventListener('blur', function (e) {
             _this.scheduledBlurHandler = _this.hideAutoCompleteDropdown;
         });
@@ -204,6 +203,16 @@ var NguiAutoCompleteDirective = (function () {
     NguiAutoCompleteDirective.prototype.ngOnChanges = function (changes) {
         if (changes['ngModel']) {
             this.ngModel = this.setToStringFunction(changes['ngModel'].currentValue);
+        }
+        if (changes['source']) {
+            this.source = changes['source'].currentValue;
+            if (this.componentRef) {
+                var component = this.componentRef.instance;
+                component.reloadList(this.ngModel.toString());
+            }
+            else {
+                this.showAutoCompleteDropdown();
+            }
         }
     };
     NguiAutoCompleteDirective.prototype.setToStringFunction = function (item) {

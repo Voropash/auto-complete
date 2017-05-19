@@ -11,7 +11,7 @@ import {
     SimpleChanges,
     SkipSelf,
     Host,
-    Optional
+    Optional, OnChanges
 } from '@angular/core';
 import {NguiAutoCompleteComponent} from './auto-complete.component';
 import {
@@ -28,7 +28,7 @@ import {
 @Directive({
     selector: "[auto-complete], [ngui-auto-complete]"
 })
-export class NguiAutoCompleteDirective implements OnInit {
+export class NguiAutoCompleteDirective implements OnInit, OnChanges {
 
     @Input("auto-complete-placeholder") autoCompletePlaceholder: string;
     @Input("source") source: any;
@@ -122,7 +122,6 @@ export class NguiAutoCompleteDirective implements OnInit {
             <HTMLInputElement>this.el : <HTMLInputElement>this.el.querySelector("input");
 
         this.inputEl.addEventListener('focus', e => this.showAutoCompleteDropdown(e));
-        this.inputEl.addEventListener('keyup', e => this.showAutoCompleteDropdown(e));
         this.inputEl.addEventListener('blur', e => {
             this.scheduledBlurHandler = this.hideAutoCompleteDropdown;
         });
@@ -139,6 +138,15 @@ export class NguiAutoCompleteDirective implements OnInit {
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['ngModel']) {
             this.ngModel = this.setToStringFunction(changes['ngModel'].currentValue);
+        }
+        if (changes['source']) {
+            this.source = changes['source'].currentValue;
+            if (this.componentRef) {
+                let component = <NguiAutoCompleteComponent>this.componentRef.instance;
+                component.reloadList(this.ngModel.toString());
+            } else {
+                this.showAutoCompleteDropdown()
+            }
         }
     }
 
