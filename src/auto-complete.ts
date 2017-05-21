@@ -24,14 +24,18 @@ export class NguiAutoComplete {
         }
         return list.filter(
             el => {
-                let objStr = matchFormatted ? this.getFormattedListItem(el).toLowerCase() :
-                    JSON.stringify(el).toLowerCase();
-                keyword = keyword.toLowerCase();
-                //console.log(objStr, keyword, objStr.indexOf(keyword) !== -1);
-                if (pos < 0) {
-                    return objStr.indexOf(keyword) !== -1;
+                if (typeof el !== 'undefined') {
+                    let objStr = matchFormatted ? this.getFormattedListItem(el).toLowerCase() :
+                        JSON.stringify(el).toLowerCase();
+                    keyword = keyword.toLowerCase();
+                    //console.log(objStr, keyword, objStr.indexOf(keyword) !== -1);
+                    if (pos < 0) {
+                        return objStr.indexOf(keyword) !== -1;
+                    } else {
+                        return true;
+                    }
                 } else {
-                    return true;
+                    return false;
                 }
             }
         );
