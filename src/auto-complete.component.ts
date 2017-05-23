@@ -34,12 +34,12 @@ import { NguiAutoComplete } from "./auto-complete";
     <ul *ngIf="dropdownVisible" [class.empty]="emptyList">
       <li *ngIf="isLoading && loadingTemplate" class="loading" [innerHTML]="loadingTemplate"></li>
       <li *ngIf="isLoading && !loadingTemplate" class="loading">{{loadingText}}</li>
-      <li *ngIf="minCharsEntered && !isLoading && !filteredList.length"
-           (mousedown)="selectOne('')"
-           class="no-match-found">{{noMatchFoundText || 'No Result Found'}}</li>
-      <li *ngIf="blankOptionText && filteredList.length"
-          (mousedown)="selectOne('')"
-          class="blank-item">{{blankOptionText}}</li>
+      <!--<li *ngIf="minCharsEntered && !isLoading && !filteredList.length"-->
+           <!--(mousedown)="selectOne('')"-->
+           <!--class="no-match-found">{{noMatchFoundText || 'No Result Found'}}</li>-->
+      <!--<li *ngIf="blankOptionText && filteredList.length"-->
+          <!--(mousedown)="selectOne('')"-->
+          <!--class="blank-item">{{blankOptionText}}</li>-->
       <li class="item"
           *ngFor="let item of filteredList; let i=index"
           (mousedown)="selectOne(item)"
