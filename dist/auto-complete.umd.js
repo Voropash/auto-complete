@@ -612,7 +612,7 @@ var NguiAutoCompleteDirective = (function () {
                 }
             }
             (val !== _this.ngModel) && _this.ngModelChange.emit(val);
-            _this.valueChanged.emit(val);
+            _this.valueChanged.emit({ val: val, item: item });
             _this.hideAutoCompleteDropdown();
         };
         this.keydownEventHandler = function (evt) {

@@ -11,7 +11,8 @@ import {
     SimpleChanges,
     SkipSelf,
     Host,
-    Optional, OnChanges
+    Optional,
+    OnChanges
 } from '@angular/core';
 import {NguiAutoCompleteComponent} from './auto-complete.component';
 import {
@@ -304,7 +305,7 @@ export class NguiAutoCompleteDirective implements OnInit, OnChanges {
             }
         }
         (val !== this.ngModel) && this.ngModelChange.emit(val);
-        this.valueChanged.emit(val);
+        this.valueChanged.emit({val: val, item: item});
         this.hideAutoCompleteDropdown();
     };
 
